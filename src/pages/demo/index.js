@@ -46,15 +46,18 @@ export default class Test extends Component {
         )
     }
 
-    clickCell(index){
+    clickCell(index) {
         switch (index) {
             case 0:
-            this.props.navigation.navigate('ReduxDemo');
+                this.props.navigation.navigate('ReduxDemo');
+                break;
             case 1:
-            this.props.navigation.navigate('ReduxDemo');
+                this.props.navigation.navigate('ReduxDemo');
+                break;
             case 2:
-            this.props.navigation.navigate('ReduxDemo');
-          }
+                this.props.navigation.navigate('ReduxDemo');
+                break;
+        }
     }
 
     header = () => {
