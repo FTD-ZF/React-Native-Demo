@@ -61,4 +61,5 @@ c. store负责存储状态并可以被react api回调，发布action.
 2.监听事件，事件有权利回到所有状态顶层影响状态。
 
 
-**关于Redux-Saga的理解**
+**关于Redux-Saga的理解**<br>
+未完待续.......
