@@ -1,7 +1,7 @@
 import React, { Component } from 'react';
 import { BackHandler, ToastAndroid } from "react-native";
 import { connect } from 'react-redux';
-import { addListener } from './redux';
+import { addListener } from './helpers';
 import Routers from '../../routers/app';
 import { addNavigationHelpers, NavigationActions } from 'react-navigation';
 

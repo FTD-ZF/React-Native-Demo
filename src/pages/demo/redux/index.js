@@ -14,7 +14,7 @@ import { add, del, reset } from '../../../infrastructure/actions/demo/redux';
 export default class Index extends Component {
 
     static navigationOptions = {
-        headerTitle: "Home",
+        headerTitle: "ReduxDemo",
     }
     reset() {
         this.props.dispatch(reset());

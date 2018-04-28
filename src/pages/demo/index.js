@@ -1,4 +1,4 @@
-import { StyleSheet, Text, View, FlatList } from 'react-native';
+import { StyleSheet, Text, View, FlatList, TouchableOpacity } from 'react-native';
 import React, { Component } from 'react';
 import { Dimensions, Button, Alert } from "react-native"
 import Icon from 'react-native-vector-icons/Ionicons';
@@ -31,18 +31,17 @@ export default class Test extends Component {
 
     renderCell = (item) => {
         return (
-            <View style={styles.cell}>
+            <TouchableOpacity style={styles.cell} 
+            onPress={() => this.clickCell(item.index)}>
                 <View style={styles.txtView}>
-                    <Text
-                        style={styles.txt}
-                        onPress={() => this.clickCell(item.index)}>
+                    <Text style={styles.txt}>
                         {item.item}
                     </Text>
                 </View>
                 <View style={styles.icon}>
                     <Icon name="ios-arrow-forward-outline" size={30} color="black" style={{ marginRight: 12 }} />
                 </View>
-            </View>
+            </TouchableOpacity>
         )
     }
 
@@ -52,7 +51,7 @@ export default class Test extends Component {
                 this.props.navigation.navigate('ReduxDemo');
                 break;
             case 1:
-                this.props.navigation.navigate('ReduxDemo');
+                this.props.navigation.navigate('Saga');
                 break;
             case 2:
                 this.props.navigation.navigate('ReduxDemo');

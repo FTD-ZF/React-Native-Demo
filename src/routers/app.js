@@ -1,6 +1,6 @@
 import { StackNavigator, TabNavigator } from "react-navigation"
 import { headerOptions, RouteConfigs, TabNavigatorConfig, StackNavigatorConfig } from "../components/Navigation/config"
-import { ReduxDemo, ReduxA, DemoList} from "./index"
+import { ReduxDemo, ReduxA, DemoList, Saga} from "./index"
 
 const TabBarText = {
   home: "首页",
@@ -44,6 +44,17 @@ const Routers = StackNavigator(
     },
     ReduxDemo: {
       screen: ReduxDemo,
+      navigationOptions: props => {
+        return headerOptions({
+          ...props,
+          ...{
+            back: true,
+          },
+        })
+      },
+    },
+    Saga: {
+      screen: Saga,
       navigationOptions: props => {
         return headerOptions({
           ...props,

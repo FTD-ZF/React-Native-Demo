@@ -25,13 +25,13 @@ const headerOptions = props => {
       {
         name: "share",
         callback: () => {
-          console.log("this is my share button")
+          console.log("分享按钮")
         },
       },
       {
         name: "reload",
         callback: () => {
-          console.log("this is my search button")
+          console.log("搜索按钮")
         },
       },
     ])
