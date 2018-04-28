@@ -1,9 +1,9 @@
 import { combineReducers } from 'redux';
-import home from './home';
-import nav from './nav';
+import redux from './demo/redux';
+import nav from './base/nav';
 
 const rootReducer = combineReducers({
-  home,
+  redux,
   nav
 });
 

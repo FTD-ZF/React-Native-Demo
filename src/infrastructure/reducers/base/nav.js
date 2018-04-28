@@ -1,4 +1,4 @@
-import Routers from "../../routers/app"
+import Routers from "../../../routers/app"
 
 const nav = (state, action) => {
   const newState = Routers.router.getStateForAction(action, state)

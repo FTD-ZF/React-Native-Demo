@@ -1,9 +1,9 @@
-import Home from "../pages/home";
-import Test from "../pages/test";
+import ReduxDemo from "../pages/demo/redux";
+import ReduxA from "../pages/demo/redux/reduxA";
 import DemoList from "../pages/demo/index";
 
 module.exports = {
-  Home,
-  Test,
+  ReduxDemo,
+  ReduxA,
   DemoList
 };

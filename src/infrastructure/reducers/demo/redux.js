@@ -1,4 +1,4 @@
-import { ADD, DEL, RESET} from '../constants/actionsTypes';
+import { ADD, DEL, RESET} from '../../constants/actionsTypes';
 
 // 原始默认state
 const defaultState = {

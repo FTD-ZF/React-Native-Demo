@@ -6,22 +6,18 @@ import {
     TouchableOpacity
 } from 'react-native';
 import { connect } from 'react-redux';
-import { add, del, reset } from '../infrastructure/actions/home';
+import { add, del, reset } from '../../../infrastructure/actions/demo/redux';
 
 @connect(
-    state => ({ counter: state.home })
+    state => ({ counter: state.redux })
 )
-export default class Home extends Component {
+export default class Index extends Component {
 
     static navigationOptions = {
         headerTitle: "Home",
     }
     reset() {
-        // this.props.dispatch(reset());
-        this.props.navigation.navigate('Test', {
-            title: '图片详情',
-            name: '123',
-        });
+        this.props.dispatch(reset());
     }
 
     onAdd() {

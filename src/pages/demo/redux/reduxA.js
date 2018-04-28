@@ -16,12 +16,11 @@ const styles = StyleSheet.create({
 });
 
 
-
-export default class Test extends Component {
+export default class ReduxA extends Component {
 
   render() {
     const { navigation } = this.props
-    const { name, title,userAgent = "Mozi/" } = navigation.state.params
+    const { name, title } = navigation.state.params
 
     return (
       <View style={styles.container} >

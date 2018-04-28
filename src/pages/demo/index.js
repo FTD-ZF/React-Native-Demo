@@ -1,114 +1,96 @@
 import { StyleSheet, Text, View, FlatList } from 'react-native';
 import React, { Component } from 'react';
-import { Dimensions, Button, Alert} from "react-native"
-
-const { width, height } = Dimensions.get('window')
+import { Dimensions, Button, Alert } from "react-native"
+import Icon from 'react-native-vector-icons/Ionicons';
+import { AppColors, AppStyles } from '../../commons/styles';
 
 export default class Test extends Component {
+    static navigationOptions = {
+        headerTitle: "Home",
+    }
     // 构造
     constructor(props) {
         super(props);
-    }
-    refreshing() {
-        let timer = setTimeout(() => {
-            clearTimeout(timer)
-            alert('刷新成功')
-        }, 1500)
-    }
-    _onload() {
-        let timer = setTimeout(() => {
-            clearTimeout(timer)
-            alert('加载成功')
-        }, 1500)
+        console.log(AppStyles.line);
     }
     render() {
-        var data = [];
-        for (var i = 0; i < 100; i++) {
-            data.push({ key: i, title: i + '' });
-        }
-
+        var data = ['redux', 'redux-saga'];
         return (
-            <View style={{ flex: 1 }}>
-                <Button title='滚动到指定位置' onPress={() => {
-                    this._flatList.scrollToOffset({ animated: true, offset: 2000 });
-                }} />
-                <View style={{ flex: 1 }}>
-                    <FlatList
-                        ref={(flatList) => this._flatList = flatList}
-                        ListHeaderComponent={this._header}
-                        ListFooterComponent={this._footer}
-                        ItemSeparatorComponent={this._separator}
-                        renderItem={this._renderItem}
-                        onRefresh={this.refreshing}
-                        refreshing={false}
-                        onEndReachedThreshold={0}
-                        onEndReached={
-                            this._onload
-                        }
-                        numColumns={3}
-                        columnWrapperStyle={{ borderWidth: 2, borderColor: 'black', paddingLeft: 20 }}
-
-                        getItemLayout={(data, index) => (
-                            { length: 100, offset: (100 + 2) * index, index }
-                        )}
-                        data={data}>
-                    </FlatList>
-                </View>
+            <View style={styles.container}>
+                <FlatList
+                    ref={(flatList) => this._flatList = flatList}
+                    ListHeaderComponent={this.header}
+                    ItemSeparatorComponent={this.separator}
+                    renderItem={this.renderCell}
+                    onEndReachedThreshold={0}
+                    data={data}>
+                </FlatList>
             </View>
         );
     }
 
-
-    _renderItem = (item) => {
-        var txt = '第' + item.index + '个' + ' title=' + item.item.title;
-        var bgColor = item.index % 2 == 0 ? 'red' : 'blue';
-        return <Text
-            style={[{ flex: 1, height: 100, backgroundColor: bgColor }, styles.txt]} 
-            onPress={() => Alert.alert(txt)}>
-            {txt}
-        </Text>
+    renderCell = (item) => {
+        return (
+            <View style={styles.cell}>
+                <View style={styles.txtView}>
+                    <Text
+                        style={styles.txt}
+                        onPress={() => this.clickCell(item.index)}>
+                        {item.item}
+                    </Text>
+                </View>
+                <View style={styles.icon}>
+                    <Icon name="ios-arrow-forward-outline" size={30} color="black" style={{ marginRight: 12 }} />
+                </View>
+            </View>
+        )
     }
 
-    _header = () => {
-        return <Text style={[styles.txt, { backgroundColor: 'black' }]}>这是头部</Text>;
+    clickCell(index){
+        switch (index) {
+            case 0:
+            this.props.navigation.navigate('ReduxDemo');
+            case 1:
+            this.props.navigation.navigate('ReduxDemo');
+            case 2:
+            this.props.navigation.navigate('ReduxDemo');
+          }
     }
 
-    _footer = () => {
-        return <Text style={[styles.txt, { backgroundColor: 'black' }]}>这是尾部</Text>;
+    header = () => {
+        return <View style={{ height: 10 }}></View>;
     }
 
-    _separator = () => {
-        return <View style={{ height: 2, backgroundColor: 'yellow' }} />;
+    separator = () => {
+        return <View style={AppStyles.line} />;
     }
-
 
 }
+
 const styles = StyleSheet.create({
-
     container: {
-
-    },
-    content: {
-        width: width,
-        height: height,
-        backgroundColor: 'yellow',
-        justifyContent: 'center',
-        alignItems: 'center'
+        flex: 1,
+        backgroundColor: AppColors.background
     },
     cell: {
-        height: 100,
-        backgroundColor: 'purple',
-        alignItems: 'center',
-        justifyContent: 'center',
-        borderBottomColor: '#ececec',
-        borderBottomWidth: 1
+        flexDirection: 'row',
+        height: 44,
+        backgroundColor: 'white',
 
     },
     txt: {
-        textAlign: 'center',
         textAlignVertical: 'center',
-        color: 'white',
-        fontSize: 30,
+        color: 'black',
+        fontSize: 20,
+        marginLeft: 12,
+    },
+    txtView: {
+        justifyContent: 'center',
+    },
+    icon: {
+        flex: 1,
+        justifyContent: 'center',
+        alignItems: 'flex-end',
     }
 
 })

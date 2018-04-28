@@ -20,7 +20,6 @@ const headerOptions = props => {
   ) : (
     <View />
   )
-
   const headerRight = right ? (
     NavigationButton([
       {
